@@ -20,7 +20,6 @@ class Payment {
 
     private constructor()
 
-    @CommandHandler
     constructor(command: PayCommand) {
         applyEvent(PaymentRequestedEvent(command.paymentId, command.accountId, command.totalAmount))
     }
