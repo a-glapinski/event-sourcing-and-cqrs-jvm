@@ -1,0 +1,8 @@
+axon:
+  serializer:
+    events: jackson
+hotel:
+  command:
+    snapshot-trigger-threshold-room: 200
+    snapshot-trigger-threshold-account: 200
+    snapshot-trigger-threshold-payment: 200

@@ -4,8 +4,8 @@ plugins {
 	id("org.springframework.boot") version "2.7.0"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.6.21"
+	kotlin("kapt") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
-	kotlin("plugin.noarg") version "1.6.21"
 }
 
 group = "pl.poznan.put"
@@ -32,6 +32,7 @@ dependencies {
 	implementation("io.github.microutils:kotlin-logging-jvm:2.1.23")
 	implementation("org.springdoc:springdoc-openapi-ui:1.6.9")
 	implementation("org.springdoc:springdoc-openapi-kotlin:1.6.9")
+	kapt("org.springframework.boot:spring-boot-configuration-processor")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.axonframework:axon-test")
 }
@@ -40,10 +41,6 @@ dependencyManagement {
 	imports {
 		mavenBom("org.axonframework:axon-bom:${extra["axonVersion"]}")
 	}
-}
-
-noArg {
-	annotation("org.axonframework.spring.stereotype.Aggregate")
 }
 
 tasks.withType<KotlinCompile> {
