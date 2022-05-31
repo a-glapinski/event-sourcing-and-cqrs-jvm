@@ -6,3 +6,7 @@ hotel:
     snapshot-trigger-threshold-room: 200
     snapshot-trigger-threshold-account: 200
     snapshot-trigger-threshold-payment: 200
+spring:
+  data:
+    mongodb:
+      uri: mongodb://mongo:1@localhost:27017/hotel
