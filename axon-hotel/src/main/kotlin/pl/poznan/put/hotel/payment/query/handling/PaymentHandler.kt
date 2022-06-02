@@ -32,21 +32,17 @@ class PaymentHandler(
         )
             .let { paymentEntityRepository.save(it) }
             .also {
-                queryUpdateEmitter.emit<FindPayment, PaymentResponse>(
-                    PaymentResponse(it)
-                ) { query ->
+                queryUpdateEmitter.emit(PaymentResponse(it)) { query: FindPayment ->
                     query.paymentId == event.paymentId
                 }
             }
             .also {
-                queryUpdateEmitter.emit<FindPaymentsForAccount, PaymentResponse>(
-                    PaymentResponse(it)
-                ) { query ->
+                queryUpdateEmitter.emit(PaymentResponse(it)) { query: FindPaymentsForAccount ->
                     query.accountId == event.accountId
                 }
             }
             .also {
-                queryUpdateEmitter.emit<FindPayments, PaymentResponse>(PaymentResponse(it)) { true }
+                queryUpdateEmitter.emit(PaymentResponse(it)) { _: FindPayments -> true }
             }
     }
 
@@ -58,21 +54,17 @@ class PaymentHandler(
             }
             .let { paymentEntityRepository.save(it) }
             .also {
-                queryUpdateEmitter.emit<FindPayment, PaymentResponse>(
-                    PaymentResponse(it)
-                ) { query ->
+                queryUpdateEmitter.emit(PaymentResponse(it)) { query: FindPayment ->
                     query.paymentId == event.paymentId
                 }
             }
             .also {
-                queryUpdateEmitter.emit<FindPaymentsForAccount, PaymentResponse>(
-                    PaymentResponse(it)
-                ) { query ->
+                queryUpdateEmitter.emit(PaymentResponse(it)) { query: FindPaymentsForAccount ->
                     query.accountId == it.accountId
                 }
             }
             .also {
-                queryUpdateEmitter.emit<FindPayments, PaymentResponse>(PaymentResponse(it)) { true }
+                queryUpdateEmitter.emit(PaymentResponse(it)) { _: FindPayments -> true }
             }
     }
 

@@ -34,9 +34,7 @@ class RoomAvailabilityHandler(
         )
             .let { roomAvailabilityEntityRepository.save(it) }
             .also {
-                queryUpdateEmitter.emit<FindRoomAvailability, RoomAvailabilityResponse>(
-                    RoomAvailabilityResponse(it)
-                ) { query ->
+                queryUpdateEmitter.emit(RoomAvailabilityResponse(it)) { query: FindRoomAvailability ->
                     query.roomId == event.roomNumber
                 }
             }
@@ -58,9 +56,7 @@ class RoomAvailabilityHandler(
             }
             .let { roomAvailabilityEntityRepository.save(it) }
             .also {
-                queryUpdateEmitter.emit<FindRoomAvailabilityForAccount, RoomAvailabilityResponse>(
-                    RoomAvailabilityResponse(it)
-                ) { query ->
+                queryUpdateEmitter.emit(RoomAvailabilityResponse(it)) { query: FindRoomAvailabilityForAccount ->
                     query.roomId == event.roomNumber
                 }
             }
@@ -82,16 +78,12 @@ class RoomAvailabilityHandler(
             }
             .let { roomAvailabilityEntityRepository.save(it) }
             .also {
-                queryUpdateEmitter.emit<FindRoomAvailabilityForAccount, RoomAvailabilityResponse>(
-                    RoomAvailabilityResponse(it)
-                ) { query ->
+                queryUpdateEmitter.emit(RoomAvailabilityResponse(it)) { query: FindRoomAvailabilityForAccount ->
                     query.accountId == event.roomBooking.accountId && query.roomId == event.roomNumber
                 }
             }
             .also {
-                queryUpdateEmitter.emit<FindRoomAvailability, RoomAvailabilityResponse>(
-                    RoomAvailabilityResponse(it)
-                ) { query ->
+                queryUpdateEmitter.emit(RoomAvailabilityResponse(it)) { query: FindRoomAvailability ->
                     query.roomId == event.roomNumber
                 }
             }
@@ -112,16 +104,12 @@ class RoomAvailabilityHandler(
                     .first { booking -> event.roomBookingId == booking.id }
                     .accountId
 
-                queryUpdateEmitter.emit<FindRoomAvailabilityForAccount, RoomAvailabilityResponse>(
-                    RoomAvailabilityResponse(it)
-                ) { query ->
+                queryUpdateEmitter.emit(RoomAvailabilityResponse(it)) { query: FindRoomAvailabilityForAccount ->
                     query.accountId == accountId && query.roomId == event.roomNumber
                 }
             }
             .also {
-                queryUpdateEmitter.emit<FindRoomAvailability, RoomAvailabilityResponse>(
-                    RoomAvailabilityResponse(it)
-                ) { query ->
+                queryUpdateEmitter.emit(RoomAvailabilityResponse(it)) { query: FindRoomAvailability ->
                     query.roomId == event.roomNumber
                 }
             }

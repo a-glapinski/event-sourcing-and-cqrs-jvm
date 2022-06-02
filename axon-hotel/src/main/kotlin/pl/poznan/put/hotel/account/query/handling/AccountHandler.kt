@@ -28,14 +28,12 @@ class AccountHandler(
         )
             .let { accountEntityRepository.save(it) }
             .also {
-                queryUpdateEmitter.emit<FindAccount, AccountResponse>(
-                    AccountResponse(it)
-                ) { query ->
+                queryUpdateEmitter.emit(AccountResponse(it)) { query: FindAccount ->
                     query.accountId == event.accountId
                 }
             }
             .also {
-                queryUpdateEmitter.emit<FindAccounts, AccountResponse>(AccountResponse(it)) { true }
+                queryUpdateEmitter.emit(AccountResponse(it)) { _: FindAccounts -> true }
             }
     }
 
