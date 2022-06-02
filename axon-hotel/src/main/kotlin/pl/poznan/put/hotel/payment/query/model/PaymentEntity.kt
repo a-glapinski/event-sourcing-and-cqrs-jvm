@@ -8,8 +8,8 @@ import java.util.*
 @Document
 data class PaymentEntity(
     @Id
-    val paymentId: String,
-    val accountId: UUID,
-    val totalAmount: BigDecimal,
-    val paymentStatus: PaymentStatusEntity,
+    var paymentId: UUID,
+    var accountId: UUID,
+    var totalAmount: BigDecimal,
+    var paymentStatus: PaymentStatusEntity,
 )

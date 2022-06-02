@@ -1,10 +1,11 @@
 package pl.poznan.put.hotel.room.query.model
 
 import java.time.Instant
+import java.util.*
 
 data class BookingEntity(
-    val id: String,
-    val startDate: Instant,
-    val endDate: Instant,
-    val accountId: String,
+    var id: UUID,
+    var startDate: Instant,
+    var endDate: Instant,
+    var accountId: UUID,
 )

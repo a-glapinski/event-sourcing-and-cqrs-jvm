@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document
 data class RoomCheckoutScheduleEntity(
     @Id
-    val roomNumber: Int,
-    val roomStatus: RoomStatusEntity,
-    val bookings: List<BookingEntity>,
+    var roomNumber: Int,
+    var roomStatus: RoomStatusEntity,
+    val bookings: MutableList<BookingEntity>,
 )

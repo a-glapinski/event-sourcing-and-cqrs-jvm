@@ -1,11 +1,12 @@
 package pl.poznan.put.hotel.room.query.model
 
 import java.time.Instant
+import java.util.*
 
 data class FailedBookingEntity(
-    val id: String,
-    val startDate: Instant?,
-    val endDate: Instant?,
-    val accountId: String,
-    val reason: String,
+    var id: UUID,
+    var startDate: Instant?,
+    var endDate: Instant?,
+    var accountId: UUID,
+    var reason: String,
 )
