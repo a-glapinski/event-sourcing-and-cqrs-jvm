@@ -6,9 +6,9 @@ import org.axonframework.extensions.kotlin.applyEvent
 import org.axonframework.extensions.kotlin.createNew
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.spring.stereotype.Aggregate
-import pl.poznan.put.hotel.account.command.RegisterAccountCommand
-import pl.poznan.put.hotel.account.event.AccountRegisteredEvent
-import pl.poznan.put.hotel.payment.command.PayCommand
+import pl.poznan.put.hotel.account.command.coreapi.RegisterAccountCommand
+import pl.poznan.put.hotel.account.event.coreapi.AccountRegisteredEvent
+import pl.poznan.put.hotel.payment.command.coreapi.PayCommand
 import pl.poznan.put.hotel.payment.command.model.Payment
 import java.util.*
 

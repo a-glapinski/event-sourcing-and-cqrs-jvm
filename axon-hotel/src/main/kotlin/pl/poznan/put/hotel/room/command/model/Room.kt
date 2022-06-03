@@ -6,17 +6,17 @@ import org.axonframework.extensions.kotlin.applyEvent
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateMember
 import org.axonframework.spring.stereotype.Aggregate
-import pl.poznan.put.hotel.room.command.AddRoomCommand
-import pl.poznan.put.hotel.room.command.BookRoomCommand
-import pl.poznan.put.hotel.room.command.CheckInCommand
-import pl.poznan.put.hotel.room.command.CheckOutCommand
-import pl.poznan.put.hotel.room.command.MarkRoomAsPreparedCommand
-import pl.poznan.put.hotel.room.event.RoomAddedEvent
-import pl.poznan.put.hotel.room.event.RoomBookedEvent
-import pl.poznan.put.hotel.room.event.RoomBookingRejectedEvent
-import pl.poznan.put.hotel.room.event.RoomCheckedInEvent
-import pl.poznan.put.hotel.room.event.RoomCheckedOutEvent
-import pl.poznan.put.hotel.room.event.RoomPreparedEvent
+import pl.poznan.put.hotel.room.command.coreapi.AddRoomCommand
+import pl.poznan.put.hotel.room.command.coreapi.BookRoomCommand
+import pl.poznan.put.hotel.room.command.coreapi.CheckInCommand
+import pl.poznan.put.hotel.room.command.coreapi.CheckOutCommand
+import pl.poznan.put.hotel.room.command.coreapi.MarkRoomAsPreparedCommand
+import pl.poznan.put.hotel.room.event.coreapi.RoomAddedEvent
+import pl.poznan.put.hotel.room.event.coreapi.RoomBookedEvent
+import pl.poznan.put.hotel.room.event.coreapi.RoomBookingRejectedEvent
+import pl.poznan.put.hotel.room.event.coreapi.RoomCheckedInEvent
+import pl.poznan.put.hotel.room.event.coreapi.RoomCheckedOutEvent
+import pl.poznan.put.hotel.room.event.coreapi.RoomPreparedEvent
 import kotlin.properties.Delegates.notNull
 
 @Aggregate

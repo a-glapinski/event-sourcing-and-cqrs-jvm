@@ -5,10 +5,10 @@ import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.extensions.kotlin.applyEvent
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.spring.stereotype.Aggregate
-import pl.poznan.put.hotel.payment.command.PayCommand
-import pl.poznan.put.hotel.payment.command.ProcessPaymentCommand
-import pl.poznan.put.hotel.payment.event.PaymentRequestedEvent
-import pl.poznan.put.hotel.payment.event.PaymentSucceededEvent
+import pl.poznan.put.hotel.payment.command.coreapi.PayCommand
+import pl.poznan.put.hotel.payment.command.coreapi.ProcessPaymentCommand
+import pl.poznan.put.hotel.payment.event.coreapi.PaymentRequestedEvent
+import pl.poznan.put.hotel.payment.event.coreapi.PaymentSucceededEvent
 import java.util.*
 
 @Aggregate
