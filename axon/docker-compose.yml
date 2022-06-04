@@ -1,0 +1,35 @@
+services:
+  axonserver:
+    image: axoniq/axonserver
+    hostname: axonserver
+    volumes:
+      - axonserver-data:/data
+      - axonserver-events:/eventdata
+      - axonserver-config:/config:ro
+    ports:
+      - '8024:8024'
+      - '8124:8124'
+      - '8224:8224'
+    networks:
+      - axon-net
+  mongodb-hotel-booking:
+    image: docker.io/bitnami/mongodb:5.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-hotel-booking-data:/bitnami/mongodb
+    networks:
+      - axon-net
+    environment:
+      MONGODB_ROOT_PASSWORD: 1
+      MONGODB_DATABASE: hotel-booking
+      MONGODB_USERNAME: mongo
+      MONGODB_PASSWORD: 1
+volumes:
+  axonserver-data:
+  axonserver-events:
+  axonserver-config:
+  mongodb-hotel-booking-data:
+    driver: local
+networks:
+  axon-net:

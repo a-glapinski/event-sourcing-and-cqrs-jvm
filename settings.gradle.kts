@@ -1,3 +1,6 @@
 rootProject.name = "event-sourcing-and-cqrs-jvm"
 
-include("axon-hotel")
+include(
+    "axon",
+    "axon:hotel-booking",
+)
