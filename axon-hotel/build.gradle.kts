@@ -29,6 +29,7 @@ dependencies {
 	implementation("org.axonframework.extensions.reactor:axon-reactor-spring-boot-starter")
 	implementation("org.axonframework.extensions.kotlin:axon-kotlin")
 	implementation("org.axonframework.extensions.tracing:axon-tracing-spring-boot-starter")
+	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions:1.1.6")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("io.github.microutils:kotlin-logging-jvm:2.1.23")
