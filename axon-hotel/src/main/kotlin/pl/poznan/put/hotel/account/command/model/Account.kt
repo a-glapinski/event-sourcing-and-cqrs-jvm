@@ -12,7 +12,7 @@ import pl.poznan.put.hotel.payment.command.coreapi.PayCommand
 import pl.poznan.put.hotel.payment.command.model.Payment
 import java.util.*
 
-@Aggregate
+@Aggregate(snapshotTriggerDefinition = "accountSnapshotTriggerDefinition", cache = "cache")
 class Account {
     @AggregateIdentifier
     lateinit var id: UUID

@@ -19,7 +19,7 @@ import pl.poznan.put.hotel.room.event.coreapi.RoomCheckedOutEvent
 import pl.poznan.put.hotel.room.event.coreapi.RoomPreparedEvent
 import kotlin.properties.Delegates.notNull
 
-@Aggregate
+@Aggregate(snapshotTriggerDefinition = "roomSnapshotTriggerDefinition", cache = "cache")
 class Room {
     @delegate:AggregateIdentifier
     private var number by notNull<Int>()
