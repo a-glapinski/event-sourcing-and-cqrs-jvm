@@ -1,0 +1,11 @@
+axon:
+  serializer:
+    events: jackson
+server:
+  port: 8081
+spring:
+  application:
+    name: axon-hotel-inventory
+  data:
+    mongodb:
+      uri: mongodb://mongo:1@localhost:27018/hotel-inventory
