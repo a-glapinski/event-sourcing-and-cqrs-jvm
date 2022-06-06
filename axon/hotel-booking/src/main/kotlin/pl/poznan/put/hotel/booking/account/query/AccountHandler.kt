@@ -11,7 +11,7 @@ import pl.poznan.put.hotel.booking.account.query.coreapi.FindAccountQuery
 import pl.poznan.put.hotel.booking.account.query.coreapi.FindAccountsQuery
 import pl.poznan.put.hotel.booking.account.query.dto.AccountResponse
 import pl.poznan.put.hotel.booking.account.query.model.AccountEntity
-import pl.poznan.put.hotel.booking.util.repository.findByIdOrThrow
+import pl.poznan.put.util.repository.findByIdOrThrow
 
 @Component
 @ProcessingGroup("account")

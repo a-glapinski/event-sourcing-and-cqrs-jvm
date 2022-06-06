@@ -1,4 +1,4 @@
-package pl.poznan.put.hotel.booking.util.axon
+package pl.poznan.put.util.axon
 
 import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGateway
 import org.axonframework.messaging.responsetypes.ResponseTypes

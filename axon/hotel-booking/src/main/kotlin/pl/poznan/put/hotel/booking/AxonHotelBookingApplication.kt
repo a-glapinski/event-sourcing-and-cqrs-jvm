@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
 import pl.poznan.put.hotel.booking.config.command.CommandProperties
 
-@OpenAPIDefinition(info = Info(title = "Axon API", version = "1.0"))
+@OpenAPIDefinition(info = Info(title = "Axon Hotel Booking API", version = "1.0"))
 @EnableConfigurationProperties(CommandProperties::class)
 @SpringBootApplication
 class AxonHotelBookingApplication

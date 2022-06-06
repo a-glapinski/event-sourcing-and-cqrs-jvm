@@ -1,4 +1,4 @@
-package pl.poznan.put.hotel.booking.util.logging
+package pl.poznan.put.util.logging
 
 import mu.KotlinLogging
 import org.axonframework.extensions.reactor.messaging.ReactorMessageDispatchInterceptor

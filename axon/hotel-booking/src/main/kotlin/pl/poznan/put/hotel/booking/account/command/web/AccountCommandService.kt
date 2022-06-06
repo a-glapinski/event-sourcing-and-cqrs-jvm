@@ -7,7 +7,7 @@ import pl.poznan.put.hotel.booking.account.command.coreapi.RegisterAccountComman
 import pl.poznan.put.hotel.booking.account.command.dto.AccountRequest
 import pl.poznan.put.hotel.booking.account.query.coreapi.FindAccountQuery
 import pl.poznan.put.hotel.booking.account.query.dto.AccountResponse
-import pl.poznan.put.hotel.booking.util.axon.queryUpdates
+import pl.poznan.put.util.axon.queryUpdates
 import reactor.core.publisher.Mono
 import reactor.core.scheduler.Schedulers
 import reactor.kotlin.core.util.function.component1

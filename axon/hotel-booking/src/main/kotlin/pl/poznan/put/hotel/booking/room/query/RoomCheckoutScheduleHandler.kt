@@ -14,7 +14,7 @@ import pl.poznan.put.hotel.booking.room.query.dto.RoomCheckoutScheduleResponse
 import pl.poznan.put.hotel.booking.room.query.model.BookingEntity
 import pl.poznan.put.hotel.booking.room.query.model.RoomCheckoutScheduleEntity
 import pl.poznan.put.hotel.booking.room.query.model.RoomStatusEntity
-import pl.poznan.put.hotel.booking.util.repository.findByIdOrThrow
+import pl.poznan.put.util.repository.findByIdOrThrow
 
 @Component
 @ProcessingGroup("room-checkout")

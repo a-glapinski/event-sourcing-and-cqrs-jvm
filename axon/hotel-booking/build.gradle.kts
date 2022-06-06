@@ -21,6 +21,7 @@ ext {
 }
 
 dependencies {
+	implementation(project(":axon:util"))
 	implementation("org.springframework.boot:spring-boot-starter-integration")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")

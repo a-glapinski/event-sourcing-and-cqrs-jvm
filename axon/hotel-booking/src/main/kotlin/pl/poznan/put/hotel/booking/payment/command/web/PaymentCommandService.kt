@@ -8,7 +8,7 @@ import pl.poznan.put.hotel.booking.payment.command.coreapi.ProcessPaymentCommand
 import pl.poznan.put.hotel.booking.payment.command.dto.PayRequest
 import pl.poznan.put.hotel.booking.payment.query.coreapi.FindPaymentQuery
 import pl.poznan.put.hotel.booking.payment.query.dto.PaymentResponse
-import pl.poznan.put.hotel.booking.util.axon.queryUpdates
+import pl.poznan.put.util.axon.queryUpdates
 import reactor.core.publisher.Mono
 import java.time.Duration
 import java.util.*

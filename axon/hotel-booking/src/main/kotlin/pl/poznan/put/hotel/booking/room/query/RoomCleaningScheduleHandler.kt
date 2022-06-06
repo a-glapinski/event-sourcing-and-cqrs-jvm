@@ -13,7 +13,7 @@ import pl.poznan.put.hotel.booking.room.query.coreapi.FindAllRoomCleaningSchedul
 import pl.poznan.put.hotel.booking.room.query.dto.RoomCleaningScheduleResponse
 import pl.poznan.put.hotel.booking.room.query.model.BookingEntity
 import pl.poznan.put.hotel.booking.room.query.model.RoomCleaningScheduleEntity
-import pl.poznan.put.hotel.booking.util.repository.findByIdOrThrow
+import pl.poznan.put.util.repository.findByIdOrThrow
 
 @Component
 @ProcessingGroup("room-cleaning")

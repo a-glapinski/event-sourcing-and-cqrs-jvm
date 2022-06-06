@@ -13,7 +13,7 @@ import pl.poznan.put.hotel.booking.room.command.dto.RoomRequest
 import pl.poznan.put.hotel.booking.room.query.coreapi.FindRoomAvailabilityForAccountQuery
 import pl.poznan.put.hotel.booking.room.query.coreapi.FindRoomAvailabilityQuery
 import pl.poznan.put.hotel.booking.room.query.dto.RoomAvailabilityResponse
-import pl.poznan.put.hotel.booking.util.axon.queryUpdates
+import pl.poznan.put.util.axon.queryUpdates
 import reactor.core.publisher.Mono
 import java.time.Duration
 import java.util.*

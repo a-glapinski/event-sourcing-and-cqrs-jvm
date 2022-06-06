@@ -1,4 +1,4 @@
-package pl.poznan.put.hotel.booking.util.repository
+package pl.poznan.put.util.repository
 
 import org.springframework.data.repository.CrudRepository
 import java.util.function.Supplier

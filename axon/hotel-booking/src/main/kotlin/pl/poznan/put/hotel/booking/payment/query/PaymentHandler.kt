@@ -14,7 +14,7 @@ import pl.poznan.put.hotel.booking.payment.query.coreapi.FindPaymentsQuery
 import pl.poznan.put.hotel.booking.payment.query.dto.PaymentResponse
 import pl.poznan.put.hotel.booking.payment.query.model.PaymentEntity
 import pl.poznan.put.hotel.booking.payment.query.model.PaymentStatusEntity
-import pl.poznan.put.hotel.booking.util.repository.findByIdOrThrow
+import pl.poznan.put.util.repository.findByIdOrThrow
 
 @Component
 @ProcessingGroup("payment")
