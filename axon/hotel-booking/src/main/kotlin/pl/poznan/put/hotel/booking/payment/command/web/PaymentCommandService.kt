@@ -42,7 +42,7 @@ class PaymentCommandService(
 
     private fun subscribeToPaymentUpdates(paymentId: UUID): Mono<PaymentResponse> =
         reactorQueryGateway
-            .queryUpdates<PaymentResponse, FindPaymentQuery>(FindPaymentQuery(paymentId))
+            .queryUpdates<FindPaymentQuery, PaymentResponse>(FindPaymentQuery(paymentId))
             .next()
             .timeout(Duration.ofSeconds(TIMEOUT_SECONDS))
 

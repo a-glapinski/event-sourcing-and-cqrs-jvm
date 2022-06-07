@@ -37,7 +37,7 @@ class AccountCommandService(
     }
 
     private fun accountSubscriptionQuery(accountId: UUID): Mono<AccountResponse> =
-        reactorQueryGateway.queryUpdates<AccountResponse, FindAccountQuery>(FindAccountQuery(accountId))
+        reactorQueryGateway.queryUpdates<FindAccountQuery, AccountResponse>(FindAccountQuery(accountId))
             .next()
             .timeout(Duration.ofSeconds(TIMEOUT_SECONDS))
 

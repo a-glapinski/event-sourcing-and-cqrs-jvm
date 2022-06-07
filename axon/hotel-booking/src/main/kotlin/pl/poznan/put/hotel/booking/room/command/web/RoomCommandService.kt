@@ -77,14 +77,14 @@ class RoomCommandService(
             ).then(Mono.just(roomNumber))
 
     private fun subscribeToRoomUpdates(roomId: Int): Mono<RoomAvailabilityResponse> =
-        reactorQueryGateway.queryUpdates<RoomAvailabilityResponse, FindRoomAvailabilityQuery>(
+        reactorQueryGateway.queryUpdates<FindRoomAvailabilityQuery, RoomAvailabilityResponse>(
             FindRoomAvailabilityQuery(roomId)
         )
             .next()
             .timeout(Duration.ofSeconds(TIMEOUT_SECONDS))
 
     private fun subscribeToRoomForAccountUpdates(roomId: Int, accountId: UUID) =
-        reactorQueryGateway.queryUpdates<RoomAvailabilityResponse, FindRoomAvailabilityForAccountQuery>(
+        reactorQueryGateway.queryUpdates<FindRoomAvailabilityForAccountQuery, RoomAvailabilityResponse>(
             FindRoomAvailabilityForAccountQuery(roomId, accountId)
         )
             .next()
