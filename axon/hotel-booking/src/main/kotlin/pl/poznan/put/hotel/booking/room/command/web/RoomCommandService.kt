@@ -14,6 +14,7 @@ import pl.poznan.put.hotel.booking.room.query.coreapi.FindRoomAvailabilityForAcc
 import pl.poznan.put.hotel.booking.room.query.coreapi.FindRoomAvailabilityQuery
 import pl.poznan.put.hotel.booking.room.query.dto.RoomAvailabilityResponse
 import pl.poznan.put.util.axon.queryUpdates
+import pl.poznan.put.util.axon.sendAny
 import reactor.core.publisher.Mono
 import java.time.Duration
 import java.util.*
@@ -27,7 +28,7 @@ class RoomCommandService(
         Mono
             .`when`(subscribeToRoomUpdates(roomRequest.roomNumber))
             .and(
-                reactorCommandGateway.send<Any>(
+                reactorCommandGateway.sendAny(
                     AddRoomCommand(
                         roomNumber = roomRequest.roomNumber,
                         roomDescription = roomRequest.description
@@ -40,7 +41,7 @@ class RoomCommandService(
         Mono
             .`when`(subscribeToRoomForAccountUpdates(roomNumber, roomBooking.accountId))
             .and(
-                reactorCommandGateway.send<Any>(
+                reactorCommandGateway.sendAny(
                     BookRoomCommand(
                         roomNumber = roomNumber,
                         roomBooking = roomBooking.toDomain()
@@ -68,7 +69,7 @@ class RoomCommandService(
     fun checkOut(roomNumber: Int, roomBookingId: UUID): Mono<Int> =
         Mono.`when`(subscribeToRoomUpdates(roomNumber))
             .and(
-                reactorCommandGateway.send<Any>(
+                reactorCommandGateway.sendAny(
                     CheckOutCommand(
                         roomNumber = roomNumber,
                         roomBookingId = roomBookingId

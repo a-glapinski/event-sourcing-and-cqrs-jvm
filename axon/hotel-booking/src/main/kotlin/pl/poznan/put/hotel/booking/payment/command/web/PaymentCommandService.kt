@@ -9,6 +9,7 @@ import pl.poznan.put.hotel.booking.payment.command.dto.PayRequest
 import pl.poznan.put.hotel.booking.payment.query.coreapi.FindPaymentQuery
 import pl.poznan.put.hotel.booking.payment.query.dto.PaymentResponse
 import pl.poznan.put.util.axon.queryUpdates
+import pl.poznan.put.util.axon.sendAny
 import reactor.core.publisher.Mono
 import java.time.Duration
 import java.util.*
@@ -23,7 +24,7 @@ class PaymentCommandService(
         return Mono
             .`when`(subscribeToPaymentUpdates(paymentId))
             .and(
-                reactorCommandGateway.send<PaymentResponse>(
+                reactorCommandGateway.sendAny(
                     PayCommand(
                         paymentId = paymentId,
                         accountId = payRequest.accountId,
@@ -37,7 +38,7 @@ class PaymentCommandService(
     fun process(paymentId: UUID): Mono<UUID> =
         Mono
             .`when`(subscribeToPaymentUpdates(paymentId))
-            .and(reactorCommandGateway.send<PaymentResponse>(ProcessPaymentCommand(paymentId)))
+            .and(reactorCommandGateway.sendAny(ProcessPaymentCommand(paymentId)))
             .then(Mono.just(paymentId))
 
     private fun subscribeToPaymentUpdates(paymentId: UUID): Mono<PaymentResponse> =
