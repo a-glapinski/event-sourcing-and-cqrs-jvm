@@ -1,6 +1,6 @@
 axon:
   serializer:
-    events: jackson
+    general: jackson
 server:
   port: 8081
 spring:
