@@ -3,9 +3,7 @@ services:
     image: axoniq/axonserver
     hostname: axonserver
     volumes:
-      - axonserver-data:/data
-      - axonserver-events:/eventdata
-      - axonserver-config:/config:ro
+      - ./axonserver-config:/config:ro
     ports:
       - "8024:8024"
       - "8124:8124"
@@ -16,8 +14,6 @@ services:
     image: docker.io/bitnami/mongodb:5.0
     ports:
       - "27017:27017"
-    volumes:
-      - mongodb-hotel-booking-data:/bitnami/mongodb
     networks:
       - axon-net
     environment:
@@ -29,8 +25,6 @@ services:
     image: docker.io/bitnami/mongodb:5.0
     ports:
       - "27018:27017"
-    volumes:
-      - mongodb-hotel-inventory-data:/bitnami/mongodb
     networks:
       - axon-net
     environment:
@@ -40,11 +34,5 @@ services:
       MONGODB_PASSWORD: 1
 volumes:
   axonserver-data:
-  axonserver-events:
-  axonserver-config:
-  mongodb-hotel-booking-data:
-    driver: local
-  mongodb-hotel-inventory-data:
-    driver: local
 networks:
   axon-net:
