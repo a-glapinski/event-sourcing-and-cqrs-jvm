@@ -18,7 +18,7 @@ class PaymentCommandController(
     fun pay(@RequestBody payRequest: PayRequest): Mono<UUID> =
         paymentCommandService.pay(payRequest)
 
-    @PostMapping("/payments/{paymentId}/processed")
+    @PostMapping("/{paymentId}/processed")
     fun process(@PathVariable paymentId: UUID): Mono<UUID> =
         paymentCommandService.process(paymentId)
 }
