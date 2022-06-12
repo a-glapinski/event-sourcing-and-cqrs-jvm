@@ -9,8 +9,6 @@ import org.springframework.context.annotation.Configuration
 class QueryConfiguration {
     @Autowired
     fun configure(config: EventProcessingConfigurer) {
-        config.registerDefaultHandlerInterceptor { _, u ->
-            LoggingInterceptor(u)
-        }
+        config.registerDefaultHandlerInterceptor { _, u -> LoggingInterceptor(u) }
     }
 }

@@ -28,9 +28,7 @@ class CommandConfiguration {
 
     @Autowired
     fun configure(config: EventProcessingConfigurer) {
-        config.registerDefaultHandlerInterceptor { _, u ->
-            LoggingInterceptor(u)
-        }
+        config.registerDefaultHandlerInterceptor { _, u -> LoggingInterceptor(u) }
     }
 
     @Bean("cache")
@@ -38,7 +36,7 @@ class CommandConfiguration {
         WeakReferenceCache()
 
     @Bean
-    fun snapshotter() =
+    fun snapshotter(): SpringAggregateSnapshotterFactoryBean =
         SpringAggregateSnapshotterFactoryBean().apply {
             setExecutor(Executors.newSingleThreadExecutor())
         }
