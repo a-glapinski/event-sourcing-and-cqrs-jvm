@@ -8,6 +8,6 @@ import java.util.*
 data class AccountEntity(
     @Id
     var accountId: UUID,
-    var userName: String,
+    var username: String,
     var password: String,
 )

@@ -21,7 +21,7 @@ class Account {
 
     @CommandHandler
     constructor(command: RegisterAccountCommand) {
-        applyEvent(AccountRegisteredEvent(command.accountId, command.userName, command.password))
+        applyEvent(AccountRegisteredEvent(command.accountId, command.username, command.password))
     }
 
     @CommandHandler

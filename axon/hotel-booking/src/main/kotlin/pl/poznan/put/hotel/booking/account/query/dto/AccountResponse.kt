@@ -5,12 +5,12 @@ import java.util.*
 
 data class AccountResponse(
     val accountId: UUID,
-    val userName: String,
+    val username: String,
     val password: String,
 ) {
     constructor(accountEntity: AccountEntity) : this(
         accountId = accountEntity.accountId,
-        userName = accountEntity.userName,
+        username = accountEntity.username,
         password = accountEntity.password
     )
 }

@@ -23,7 +23,7 @@ class AccountHandler(
     fun on(event: AccountRegisteredEvent) {
         AccountEntity(
             accountId = event.accountId,
-            userName = event.userName,
+            username = event.username,
             password = event.password
         )
             .let { accountEntityRepository.save(it) }

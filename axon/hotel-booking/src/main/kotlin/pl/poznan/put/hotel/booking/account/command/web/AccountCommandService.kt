@@ -25,7 +25,7 @@ class AccountCommandService(
         return reactorCommandGateway.send<AccountResponse>(
             RegisterAccountCommand(
                 accountId,
-                accountRequest.userName,
+                accountRequest.username,
                 accountRequest.password
             )
         ).transform {

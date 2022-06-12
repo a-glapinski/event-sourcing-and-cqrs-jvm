@@ -6,6 +6,6 @@ import java.util.*
 data class RegisterAccountCommand(
     @TargetAggregateIdentifier
     val accountId: UUID,
-    val userName: String,
+    val username: String,
     val password: String,
 )
