@@ -100,19 +100,18 @@ class RoomAvailabilityHandler(
 
     @EventHandler
     fun on(event: RoomCheckedOutEvent) {
-        roomAvailabilityEntityRepository.findByIdOrThrow(event.roomNumber)
+        val roomAvailability = roomAvailabilityEntityRepository.findByIdOrThrow(event.roomNumber)
+        val accountId = roomAvailability.bookings
+            .first { booking -> event.roomBookingId == booking.id }
+            .accountId
+
+        roomAvailability
             .apply {
                 roomStatus = RoomStatusEntity.EMPTY
-                bookings.removeIf {
-                    it.id == event.roomBookingId
-                }
+                bookings.removeIf { it.id == event.roomBookingId }
             }
             .let { roomAvailabilityEntityRepository.save(it) }
             .also {
-                val accountId = it.bookings
-                    .first { booking -> event.roomBookingId == booking.id }
-                    .accountId
-
                 queryUpdateEmitter.emit(
                     RoomAvailabilityResponse(it, accountId)
                 ) { query: FindRoomAvailabilityForAccountQuery ->

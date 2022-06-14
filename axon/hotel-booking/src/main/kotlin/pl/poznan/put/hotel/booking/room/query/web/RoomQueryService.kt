@@ -10,6 +10,7 @@ import pl.poznan.put.hotel.booking.room.query.dto.RoomAvailabilityResponse
 import pl.poznan.put.hotel.booking.room.query.dto.RoomCheckoutScheduleResponse
 import pl.poznan.put.hotel.booking.room.query.dto.RoomCleaningScheduleResponse
 import pl.poznan.put.util.axon.query
+import pl.poznan.put.util.axon.queryMany
 import reactor.core.publisher.Mono
 import java.util.*
 
@@ -24,8 +25,8 @@ class RoomQueryService(
         reactorQueryGateway.query(FindRoomAvailabilityForAccountQuery(roomId, accountId))
 
     fun getAllCleaningSchedules(): Mono<List<RoomCleaningScheduleResponse>> =
-        reactorQueryGateway.query(FindAllRoomCleaningSchedulesQuery())
+        reactorQueryGateway.queryMany(FindAllRoomCleaningSchedulesQuery())
 
     fun getAllCheckoutSchedules(): Mono<List<RoomCheckoutScheduleResponse>> =
-        reactorQueryGateway.query(FindAllRoomCheckoutSchedulesQuery())
+        reactorQueryGateway.queryMany(FindAllRoomCheckoutSchedulesQuery())
 }

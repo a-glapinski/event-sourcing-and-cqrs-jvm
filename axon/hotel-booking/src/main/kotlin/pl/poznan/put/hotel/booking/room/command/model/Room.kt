@@ -53,9 +53,7 @@ class Room {
     @CommandHandler
     fun handle(command: MarkRoomAsPreparedCommand) {
         bookings.asSequence()
-            .filter {
-                it.roomBookingId == command.roomBookingId
-            }
+            .filter { it.roomBookingId == command.roomBookingId }
             .firstOrNull()
             ?.let { booking ->
                 applyEvent(
