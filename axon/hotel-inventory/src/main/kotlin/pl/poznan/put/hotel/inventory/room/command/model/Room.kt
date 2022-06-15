@@ -17,13 +17,13 @@ import kotlin.properties.Delegates
 @Aggregate
 class Room {
     @AggregateIdentifier
-    lateinit var roomId: UUID
+    private lateinit var roomId: UUID
 
-    var roomNumber by Delegates.notNull<Int>()
+    private var roomNumber by Delegates.notNull<Int>()
 
-    lateinit var roomStatus: RoomStatus
+    private lateinit var roomStatus: RoomStatus
 
-    lateinit var description: String
+    private lateinit var description: String
 
     private constructor()
 
