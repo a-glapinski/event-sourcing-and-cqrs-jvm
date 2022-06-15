@@ -3,10 +3,17 @@ axon:
     general: jackson
 server:
   port: 8081
+  error:
+    include-message: always
+    include-exception: true
 spring:
   application:
     name: axon-hotel-inventory
   data:
     mongodb:
-      uri: mongodb://mongo:1@localhost:27018/hotel-inventory
+      host: localhost
+      port: 27018
+      database: hotel-inventory
+      username: mongo
+      password: "1"
       uuid-representation: standard

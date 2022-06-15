@@ -26,6 +26,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.axonframework:axon-spring-boot-starter")
+    implementation("org.axonframework.extensions.mongo:axon-mongo")
     implementation("org.axonframework.extensions.reactor:axon-reactor-spring-boot-starter")
     implementation("org.axonframework.extensions.kotlin:axon-kotlin")
     implementation("org.axonframework.extensions.tracing:axon-tracing-spring-boot-starter")
