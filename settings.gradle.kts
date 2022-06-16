@@ -5,5 +5,4 @@ include(
     "axon:util",
     "axon:gateway",
     "axon:hotel-booking",
-    "axon:hotel-inventory",
 )

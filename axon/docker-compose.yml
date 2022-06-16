@@ -32,17 +32,6 @@ services:
       MONGODB_DATABASE: hotel-booking
       MONGODB_USERNAME: mongo
       MONGODB_PASSWORD: 1
-  mongodb-hotel-inventory:
-    image: bitnami/mongodb:5.0
-    ports:
-      - "27018:27017"
-    networks:
-      - axon-net
-    environment:
-      MONGODB_ROOT_PASSWORD: 1
-      MONGODB_DATABASE: hotel-inventory
-      MONGODB_USERNAME: mongo
-      MONGODB_PASSWORD: 1
 volumes:
   axonserver-data:
 networks:
