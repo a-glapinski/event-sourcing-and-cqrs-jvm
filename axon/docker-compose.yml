@@ -10,8 +10,19 @@ services:
       - "8224:8224"
     networks:
       - axon-net
+  consul:
+    image: bitnami/consul:1.12.2
+    ports:
+      - "8300:8300"
+      - "8301:8301"
+      - "8301:8301/udp"
+      - "8500:8500"
+      - "8600:8600"
+      - "8600:8600/udp"
+    networks:
+      - axon-net
   mongodb-hotel-booking:
-    image: docker.io/bitnami/mongodb:5.0
+    image: bitnami/mongodb:5.0
     ports:
       - "27017:27017"
     networks:
@@ -22,7 +33,7 @@ services:
       MONGODB_USERNAME: mongo
       MONGODB_PASSWORD: 1
   mongodb-hotel-inventory:
-    image: docker.io/bitnami/mongodb:5.0
+    image: bitnami/mongodb:5.0
     ports:
       - "27018:27017"
     networks:

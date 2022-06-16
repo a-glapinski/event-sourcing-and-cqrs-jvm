@@ -8,7 +8,7 @@ hotel:
       snapshot-trigger-threshold-account: 200
       snapshot-trigger-threshold-payment: 200
 server:
-  port: 8080
+  port: 8081
   error:
     include-message: always
     include-exception: true
