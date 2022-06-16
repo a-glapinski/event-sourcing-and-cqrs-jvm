@@ -12,10 +12,16 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: axon-hotel-booking
-          uri: lb://axon-hotel-booking
+        - id: axon-hotel-booking-command
+          uri: lb://axon-hotel-booking-command
           predicates:
             - Path=/api/hotel-booking/command/**
+          filters:
+            - StripPrefix=3
+        - id: axon-hotel-booking-query
+          uri: lb://axon-hotel-booking-query
+          predicates:
+            - Path=/api/hotel-booking/query/**
           filters:
             - StripPrefix=3
         - id: openapi

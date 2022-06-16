@@ -1,0 +1,17 @@
+axon:
+  serializer:
+    general: jackson
+hotel:
+  booking:
+    command:
+      snapshot-trigger-threshold-room: 200
+      snapshot-trigger-threshold-account: 200
+      snapshot-trigger-threshold-payment: 200
+server:
+  port: 8081
+  error:
+    include-message: always
+    include-exception: true
+spring:
+  application:
+    name: axon-hotel-booking-command
