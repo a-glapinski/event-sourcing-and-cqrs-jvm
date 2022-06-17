@@ -7,6 +7,7 @@ import org.axonframework.queryhandling.QueryHandler
 import org.axonframework.queryhandling.QueryUpdateEmitter
 import org.springframework.stereotype.Component
 import pl.poznan.put.hotel.booking.room.dto.RoomAvailabilityResponse
+import pl.poznan.put.hotel.booking.room.dto.toResponse
 import pl.poznan.put.hotel.booking.room.event.RoomAddedEvent
 import pl.poznan.put.hotel.booking.room.event.RoomBookedEvent
 import pl.poznan.put.hotel.booking.room.event.RoomBookingRejectedEvent
@@ -23,7 +24,7 @@ import pl.poznan.put.util.repository.findByIdOrThrow
 @ProcessingGroup("room-availability")
 class RoomAvailabilityHandler(
     private val queryUpdateEmitter: QueryUpdateEmitter,
-    private val roomAvailabilityEntityRepository: pl.poznan.put.hotel.booking.room.RoomAvailabilityEntityRepository,
+    private val roomAvailabilityEntityRepository: RoomAvailabilityEntityRepository,
 ) {
     @EventHandler
     fun on(event: RoomAddedEvent) {
@@ -34,7 +35,7 @@ class RoomAvailabilityHandler(
         )
             .let { roomAvailabilityEntityRepository.save(it) }
             .also {
-                queryUpdateEmitter.emit(RoomAvailabilityResponse(it)) { query: FindRoomAvailabilityQuery ->
+                queryUpdateEmitter.emit(it.toResponse()) { query: FindRoomAvailabilityQuery ->
                     query.roomId == event.roomNumber
                 }
             }
@@ -57,13 +58,13 @@ class RoomAvailabilityHandler(
             .let { roomAvailabilityEntityRepository.save(it) }
             .also {
                 queryUpdateEmitter.emit(
-                    RoomAvailabilityResponse(it, event.roomBooking.accountId)
+                    it.toResponse(event.roomBooking.accountId)
                 ) { query: FindRoomAvailabilityForAccountQuery ->
                     query.accountId == event.roomBooking.accountId && query.roomId == event.roomNumber
                 }
             }
             .also {
-                queryUpdateEmitter.emit(RoomAvailabilityResponse(it)) { query: FindRoomAvailabilityQuery ->
+                queryUpdateEmitter.emit(it.toResponse()) { query: FindRoomAvailabilityQuery ->
                     query.roomId == event.roomNumber
                 }
             }
@@ -86,13 +87,13 @@ class RoomAvailabilityHandler(
             .let { roomAvailabilityEntityRepository.save(it) }
             .also {
                 queryUpdateEmitter.emit(
-                    RoomAvailabilityResponse(it, event.roomBooking.accountId)
+                    it.toResponse(event.roomBooking.accountId)
                 ) { query: FindRoomAvailabilityForAccountQuery ->
                     query.accountId == event.roomBooking.accountId && query.roomId == event.roomNumber
                 }
             }
             .also {
-                queryUpdateEmitter.emit(RoomAvailabilityResponse(it)) { query: FindRoomAvailabilityQuery ->
+                queryUpdateEmitter.emit(it.toResponse()) { query: FindRoomAvailabilityQuery ->
                     query.roomId == event.roomNumber
                 }
             }
@@ -113,13 +114,13 @@ class RoomAvailabilityHandler(
             .let { roomAvailabilityEntityRepository.save(it) }
             .also {
                 queryUpdateEmitter.emit(
-                    RoomAvailabilityResponse(it, accountId)
+                    it.toResponse(accountId)
                 ) { query: FindRoomAvailabilityForAccountQuery ->
                     query.accountId == accountId && query.roomId == event.roomNumber
                 }
             }
             .also {
-                queryUpdateEmitter.emit(RoomAvailabilityResponse(it)) { query: FindRoomAvailabilityQuery ->
+                queryUpdateEmitter.emit(it.toResponse()) { query: FindRoomAvailabilityQuery ->
                     query.roomId == event.roomNumber
                 }
             }
@@ -129,11 +130,11 @@ class RoomAvailabilityHandler(
     fun handle(query: FindRoomAvailabilityForAccountQuery): RoomAvailabilityResponse =
         roomAvailabilityEntityRepository
             .findByIdOrThrow(query.roomId)
-            .let { RoomAvailabilityResponse(it, query.accountId) }
+            .toResponse(query.accountId)
 
     @QueryHandler
     fun handle(query: FindRoomAvailabilityQuery): RoomAvailabilityResponse =
         roomAvailabilityEntityRepository
             .findByIdOrThrow(query.roomId)
-            .let { RoomAvailabilityResponse(it) }
+            .toResponse()
 }

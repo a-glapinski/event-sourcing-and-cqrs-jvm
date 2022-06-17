@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service
 import pl.poznan.put.hotel.booking.payment.command.PayCommand
 import pl.poznan.put.hotel.booking.payment.command.ProcessPaymentCommand
 import pl.poznan.put.hotel.booking.payment.dto.PayRequest
-import pl.poznan.put.hotel.booking.payment.query.coreapi.FindPaymentQuery
-import pl.poznan.put.hotel.booking.payment.query.dto.PaymentResponse
+import pl.poznan.put.hotel.booking.payment.dto.PaymentResponse
+import pl.poznan.put.hotel.booking.payment.query.FindPaymentQuery
 import pl.poznan.put.util.axon.queryUpdates
 import pl.poznan.put.util.axon.sendAny
 import reactor.core.publisher.Mono

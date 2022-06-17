@@ -5,8 +5,8 @@ import org.axonframework.extensions.reactor.queryhandling.gateway.ReactorQueryGa
 import org.springframework.stereotype.Service
 import pl.poznan.put.hotel.booking.account.command.RegisterAccountCommand
 import pl.poznan.put.hotel.booking.account.dto.AccountRequest
-import pl.poznan.put.hotel.booking.account.query.coreapi.FindAccountQuery
-import pl.poznan.put.hotel.booking.account.query.dto.AccountResponse
+import pl.poznan.put.hotel.booking.account.dto.AccountResponse
+import pl.poznan.put.hotel.booking.account.query.FindAccountQuery
 import pl.poznan.put.util.axon.queryUpdates
 import reactor.core.publisher.Mono
 import reactor.core.scheduler.Schedulers
