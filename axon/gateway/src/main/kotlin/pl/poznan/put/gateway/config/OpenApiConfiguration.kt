@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Lazy
 
 @Configuration
-class OpenApiConfig {
+class OpenApiConfiguration {
     @Bean
     @RefreshScope
     @Lazy(false)
