@@ -4,7 +4,6 @@ plugins {
     id("org.springframework.boot") version "2.7.0"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.7.0"
-//    kotlin("kapt") version "1.7.0"
     kotlin("plugin.spring") version "1.7.0"
 }
 
@@ -30,6 +29,7 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.axonframework:axon-spring-boot-starter")
+    implementation("org.axonframework.extensions.springcloud:axon-springcloud-spring-boot-starter")
     implementation("org.axonframework.extensions.reactor:axon-reactor-spring-boot-starter")
     implementation("org.axonframework.extensions.kotlin:axon-kotlin")
     implementation("org.axonframework.extensions.tracing:axon-tracing-spring-boot-starter")
@@ -41,7 +41,6 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-webflux-core:1.6.9")
     implementation("org.springdoc:springdoc-openapi-kotlin:1.6.9")
     implementation("com.github.ben-manes.caffeine:caffeine:3.1.1")
-//    kapt("org.springframework.boot:spring-boot-configuration-processor")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.axonframework:axon-test")
     testImplementation("io.projectreactor:reactor-test")
