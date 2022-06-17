@@ -22,7 +22,7 @@ ext {
 
 dependencies {
 	implementation(project(":axon:util"))
-	implementation(project(":axon:common"))
+	implementation(project(":axon:hotel-booking-common"))
 	implementation("org.springframework.boot:spring-boot-starter-integration")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
