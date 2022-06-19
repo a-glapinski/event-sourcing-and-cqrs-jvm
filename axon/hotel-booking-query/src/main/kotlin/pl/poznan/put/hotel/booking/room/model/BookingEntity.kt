@@ -4,8 +4,8 @@ import java.time.Instant
 import java.util.*
 
 data class BookingEntity(
-    var id: UUID,
-    var startDate: Instant,
-    var endDate: Instant,
-    var accountId: UUID,
+    val id: UUID,
+    val startDate: Instant,
+    val endDate: Instant,
+    val accountId: UUID,
 )

@@ -7,7 +7,7 @@ import java.util.*
 @Document
 data class AccountEntity(
     @Id
-    var accountId: UUID,
-    var username: String,
-    var password: String,
+    val accountId: UUID,
+    val username: String,
+    val password: String,
 )

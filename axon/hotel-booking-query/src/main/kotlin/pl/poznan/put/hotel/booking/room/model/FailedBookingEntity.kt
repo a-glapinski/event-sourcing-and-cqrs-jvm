@@ -4,9 +4,9 @@ import java.time.Instant
 import java.util.*
 
 data class FailedBookingEntity(
-    var id: UUID,
-    var startDate: Instant?,
-    var endDate: Instant?,
-    var accountId: UUID,
-    var reason: String,
+    val id: UUID,
+    val startDate: Instant?,
+    val endDate: Instant?,
+    val accountId: UUID,
+    val reason: String,
 )
