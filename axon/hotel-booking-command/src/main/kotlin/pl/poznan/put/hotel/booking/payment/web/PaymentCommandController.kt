@@ -15,10 +15,10 @@ class PaymentCommandController(
     private val paymentCommandService: PaymentCommandService,
 ) {
     @PostMapping
-    fun pay(@RequestBody payRequest: PayRequest): Mono<UUID> =
+    fun pay(@RequestBody payRequest: PayRequest): Mono<Void> =
         paymentCommandService.pay(payRequest)
 
     @PostMapping("/{paymentId}/processed")
-    fun process(@PathVariable paymentId: UUID): Mono<UUID> =
+    fun process(@PathVariable paymentId: UUID): Mono<Void> =
         paymentCommandService.process(paymentId)
 }

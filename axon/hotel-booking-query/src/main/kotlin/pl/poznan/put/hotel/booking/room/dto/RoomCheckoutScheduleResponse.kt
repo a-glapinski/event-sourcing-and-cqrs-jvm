@@ -8,6 +8,6 @@ data class RoomCheckoutScheduleResponse(
 ) {
     constructor(roomCheckoutScheduleEntity: RoomCheckoutScheduleEntity) : this(
         roomNumber = roomCheckoutScheduleEntity.roomNumber,
-        bookings = roomCheckoutScheduleEntity.bookings.map { it.toDto() }
+        bookings = roomCheckoutScheduleEntity.bookings.map { BookingDto(it) }
     )
 }

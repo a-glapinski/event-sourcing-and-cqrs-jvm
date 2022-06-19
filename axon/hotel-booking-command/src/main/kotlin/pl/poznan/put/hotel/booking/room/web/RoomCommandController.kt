@@ -16,22 +16,22 @@ class RoomCommandController(
     private val roomCommandService: RoomCommandService,
 ) {
     @PostMapping
-    fun add(@RequestBody roomRequest: RoomRequest): Mono<Int> =
+    fun add(@RequestBody roomRequest: RoomRequest): Mono<Void> =
         roomCommandService.add(roomRequest)
 
     @PostMapping("/{roomNumber}/booked")
-    fun book(@PathVariable roomNumber: Int, @RequestBody roomBooking: RoomBookingDto): Mono<Int> =
+    fun book(@PathVariable roomNumber: Int, @RequestBody roomBooking: RoomBookingDto): Mono<Void> =
         roomCommandService.book(roomNumber, roomBooking)
 
     @PostMapping("/{roomNumber}/bookings/{roomBookingId}/prepared")
-    fun markAsPrepared(@PathVariable roomNumber: Int, @PathVariable roomBookingId: UUID): Mono<Int> =
+    fun markAsPrepared(@PathVariable roomNumber: Int, @PathVariable roomBookingId: UUID): Mono<Void> =
         roomCommandService.markAsPrepared(roomNumber, roomBookingId)
 
     @PostMapping("/{roomNumber}/bookings/{roomBookingId}/checked-in")
-    fun checkIn(@PathVariable roomNumber: Int, @PathVariable roomBookingId: UUID): Mono<Int> =
+    fun checkIn(@PathVariable roomNumber: Int, @PathVariable roomBookingId: UUID): Mono<Void> =
         roomCommandService.checkIn(roomNumber, roomBookingId)
 
     @PostMapping("/{roomNumber}/bookings/{roomBookingId}/checked-out")
-    fun checkOut(@PathVariable roomNumber: Int, @PathVariable roomBookingId: UUID): Mono<Int> =
+    fun checkOut(@PathVariable roomNumber: Int, @PathVariable roomBookingId: UUID): Mono<Void> =
         roomCommandService.checkOut(roomNumber, roomBookingId)
 }

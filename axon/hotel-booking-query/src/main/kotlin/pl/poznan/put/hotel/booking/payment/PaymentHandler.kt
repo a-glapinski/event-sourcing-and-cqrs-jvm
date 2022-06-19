@@ -7,7 +7,6 @@ import org.axonframework.queryhandling.QueryHandler
 import org.axonframework.queryhandling.QueryUpdateEmitter
 import org.springframework.stereotype.Component
 import pl.poznan.put.hotel.booking.payment.dto.PaymentResponse
-import pl.poznan.put.hotel.booking.payment.dto.toResponse
 import pl.poznan.put.hotel.booking.payment.event.PaymentRequestedEvent
 import pl.poznan.put.hotel.booking.payment.event.PaymentSucceededEvent
 import pl.poznan.put.hotel.booking.payment.model.PaymentEntity
@@ -33,17 +32,17 @@ class PaymentHandler(
         )
             .let { paymentEntityRepository.save(it) }
             .also {
-                queryUpdateEmitter.emit(it.toResponse()) { query: FindPaymentQuery ->
+                queryUpdateEmitter.emit(PaymentResponse(it)) { query: FindPaymentQuery ->
                     query.paymentId == event.paymentId
                 }
             }
             .also {
-                queryUpdateEmitter.emit(it.toResponse()) { query: FindPaymentsForAccountQuery ->
+                queryUpdateEmitter.emit(PaymentResponse(it)) { query: FindPaymentsForAccountQuery ->
                     query.accountId == event.accountId
                 }
             }
             .also {
-                queryUpdateEmitter.emit(it.toResponse()) { _: FindPaymentsQuery -> true }
+                queryUpdateEmitter.emit(PaymentResponse(it)) { _: FindPaymentsQuery -> true }
             }
     }
 
@@ -55,17 +54,17 @@ class PaymentHandler(
             }
             .let { paymentEntityRepository.save(it) }
             .also {
-                queryUpdateEmitter.emit(it.toResponse()) { query: FindPaymentQuery ->
+                queryUpdateEmitter.emit(PaymentResponse(it)) { query: FindPaymentQuery ->
                     query.paymentId == event.paymentId
                 }
             }
             .also {
-                queryUpdateEmitter.emit(it.toResponse()) { query: FindPaymentsForAccountQuery ->
+                queryUpdateEmitter.emit(PaymentResponse(it)) { query: FindPaymentsForAccountQuery ->
                     query.accountId == it.accountId
                 }
             }
             .also {
-                queryUpdateEmitter.emit(it.toResponse()) { _: FindPaymentsQuery -> true }
+                queryUpdateEmitter.emit(PaymentResponse(it)) { _: FindPaymentsQuery -> true }
             }
     }
 
@@ -73,15 +72,15 @@ class PaymentHandler(
     fun handle(query: FindPaymentQuery): PaymentResponse =
         paymentEntityRepository
             .findByIdOrThrow(query.paymentId)
-            .toResponse()
+            .let { PaymentResponse(it) }
 
     @QueryHandler
     fun handle(query: FindPaymentsQuery): List<PaymentResponse> =
         paymentEntityRepository.findAll()
-            .map { it.toResponse() }
+            .map { PaymentResponse(it) }
 
     @QueryHandler
     fun handle(query: FindPaymentsForAccountQuery): List<PaymentResponse> =
         paymentEntityRepository.findByAccountId(query.accountId)
-            .map { it.toResponse() }
+            .map { PaymentResponse(it) }
 }

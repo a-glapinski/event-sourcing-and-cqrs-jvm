@@ -7,7 +7,6 @@ import org.axonframework.queryhandling.QueryHandler
 import org.axonframework.queryhandling.QueryUpdateEmitter
 import org.springframework.stereotype.Component
 import pl.poznan.put.hotel.booking.account.dto.AccountResponse
-import pl.poznan.put.hotel.booking.account.dto.toResponse
 import pl.poznan.put.hotel.booking.account.event.AccountRegisteredEvent
 import pl.poznan.put.hotel.booking.account.model.AccountEntity
 import pl.poznan.put.hotel.booking.account.query.FindAccountQuery
@@ -29,12 +28,12 @@ class AccountHandler(
         )
             .let { accountEntityRepository.save(it) }
             .also {
-                queryUpdateEmitter.emit(it.toResponse()) { query: FindAccountQuery ->
+                queryUpdateEmitter.emit(AccountResponse(it)) { query: FindAccountQuery ->
                     query.accountId == event.accountId
                 }
             }
             .also {
-                queryUpdateEmitter.emit(it.toResponse()) { _: FindAccountsQuery -> true }
+                queryUpdateEmitter.emit(AccountResponse(it)) { _: FindAccountsQuery -> true }
             }
     }
 
@@ -42,10 +41,10 @@ class AccountHandler(
     fun handle(query: FindAccountQuery): AccountResponse =
         accountEntityRepository
             .findByIdOrThrow(query.accountId)
-            .toResponse()
+            .let { AccountResponse(it) }
 
     @QueryHandler
     fun handle(query: FindAccountsQuery): List<AccountResponse> =
         accountEntityRepository.findAll()
-            .map { it.toResponse() }
+            .map { AccountResponse(it) }
 }
