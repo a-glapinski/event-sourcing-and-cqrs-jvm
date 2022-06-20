@@ -21,10 +21,32 @@ services:
       - "8600:8600/udp"
     networks:
       - axon-net
-  mongodb-hotel-booking:
+  mongodb-hotel-booking-1:
     image: bitnami/mongodb:5.0
     ports:
       - "27017:27017"
+    networks:
+      - axon-net
+    environment:
+      MONGODB_ROOT_PASSWORD: 1
+      MONGODB_DATABASE: hotel-booking
+      MONGODB_USERNAME: mongo
+      MONGODB_PASSWORD: 1
+  mongodb-hotel-booking-2:
+    image: bitnami/mongodb:5.0
+    ports:
+      - "27018:27017"
+    networks:
+      - axon-net
+    environment:
+      MONGODB_ROOT_PASSWORD: 1
+      MONGODB_DATABASE: hotel-booking
+      MONGODB_USERNAME: mongo
+      MONGODB_PASSWORD: 1
+  mongodb-hotel-booking-3:
+    image: bitnami/mongodb:5.0
+    ports:
+      - "27019:27017"
     networks:
       - axon-net
     environment:

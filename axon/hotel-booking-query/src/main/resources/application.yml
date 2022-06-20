@@ -2,7 +2,7 @@ axon:
   serializer:
     general: jackson
 server:
-  port: 8082
+  port: 8181
   error:
     include-message: always
     include-exception: true
