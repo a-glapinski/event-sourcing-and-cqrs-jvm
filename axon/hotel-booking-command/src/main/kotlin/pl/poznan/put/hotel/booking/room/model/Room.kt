@@ -73,13 +73,13 @@ class Room {
 
     @CommandHandler
     fun handle(command: CheckInCommand) {
-        require(roomIsPrepared()) { "Room $number is not prepared" }
+        check(roomIsPrepared()) { "Room $number is not prepared" }
         applyEvent(RoomCheckedInEvent(command.roomNumber, command.roomBookingId))
     }
 
     @CommandHandler
     fun handle(command: CheckOutCommand) {
-        require(roomIsCheckedIn()) { "Room $number is not checked-in" }
+        check(roomIsCheckedIn()) { "Room $number is not checked-in" }
         applyEvent(RoomCheckedOutEvent(command.roomNumber, command.roomBookingId))
     }
 

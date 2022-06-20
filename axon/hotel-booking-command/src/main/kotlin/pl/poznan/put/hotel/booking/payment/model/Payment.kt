@@ -26,7 +26,7 @@ class Payment {
 
     @CommandHandler
     fun handle(command: ProcessPaymentCommand) {
-        require(status == PaymentStatus.PROCESSING) { "Payment is not in PROCESSING state" }
+        check(status == PaymentStatus.PROCESSING) { "Payment is not in PROCESSING state" }
         applyEvent(PaymentSucceededEvent(command.paymentId))
     }
 
