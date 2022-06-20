@@ -8,15 +8,4 @@ data class RoomBooking(
     val endDate: Instant,
     val accountId: UUID,
     val bookingId: UUID,
-) {
-    constructor(
-        startDate: Instant,
-        endDate: Instant,
-        accountId: UUID,
-    ) : this(
-        startDate = startDate,
-        endDate = endDate,
-        accountId = accountId,
-        bookingId = UUID.randomUUID()
-    )
-}
+)
