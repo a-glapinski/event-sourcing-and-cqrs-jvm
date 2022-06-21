@@ -11,7 +11,7 @@ import pl.poznan.put.hotel.booking.payment.event.PaymentRequestedEvent
 import pl.poznan.put.hotel.booking.payment.event.PaymentSucceededEvent
 import java.util.*
 
-@Aggregate(snapshotTriggerDefinition = "paymentSnapshotTriggerDefinition", cache = "cache")
+@Aggregate(snapshotTriggerDefinition = "paymentSnapshotTriggerDefinition", cache = "paymentCache")
 class Payment {
     @AggregateIdentifier
     private lateinit var id: UUID

@@ -19,7 +19,7 @@ import pl.poznan.put.hotel.booking.room.event.RoomCheckedOutEvent
 import pl.poznan.put.hotel.booking.room.event.RoomPreparedEvent
 import pl.poznan.put.hotel.booking.room.valueobject.RoomBooking
 
-@Aggregate(snapshotTriggerDefinition = "roomSnapshotTriggerDefinition", cache = "cache")
+@Aggregate(snapshotTriggerDefinition = "roomSnapshotTriggerDefinition", cache = "roomCache")
 class Room {
     @AggregateIdentifier
     private var number: Int? = null
@@ -36,7 +36,6 @@ class Room {
         applyEvent(RoomAddedEvent(command.roomNumber, command.roomDescription))
     }
 
-    // TODO Check Account invariant
     @CommandHandler
     fun handle(command: BookRoomCommand) {
         when (command.roomBooking.isBookingAllowed()) {
@@ -53,9 +52,8 @@ class Room {
 
     @CommandHandler
     fun handle(command: MarkRoomAsPreparedCommand) {
-        bookings.asSequence()
-            .filter { it.roomBookingId == command.roomBookingId }
-            .firstOrNull()
+        bookings
+            .firstOrNull { it.roomBookingId == command.roomBookingId }
             ?.let { booking ->
                 applyEvent(
                     RoomPreparedEvent(

@@ -6,6 +6,7 @@ import org.axonframework.common.caching.WeakReferenceCache
 import org.axonframework.config.EventProcessingConfigurer
 import org.axonframework.eventhandling.EventBus
 import org.axonframework.eventsourcing.EventCountSnapshotTriggerDefinition
+import org.axonframework.eventsourcing.SnapshotTriggerDefinition
 import org.axonframework.eventsourcing.Snapshotter
 import org.axonframework.messaging.interceptors.LoggingInterceptor
 import org.axonframework.spring.eventsourcing.SpringAggregateSnapshotterFactoryBean
@@ -31,8 +32,16 @@ class CommandConfiguration {
         config.registerDefaultHandlerInterceptor { _, u -> LoggingInterceptor(u) }
     }
 
-    @Bean("cache")
-    fun cache(): Cache =
+    @Bean
+    fun accountCache(): Cache =
+        WeakReferenceCache()
+
+    @Bean
+    fun paymentCache(): Cache =
+        WeakReferenceCache()
+
+    @Bean
+    fun roomCache(): Cache =
         WeakReferenceCache()
 
     @Bean
@@ -45,7 +54,7 @@ class CommandConfiguration {
     fun roomSnapshotTriggerDefinition(
         snapshotter: Snapshotter,
         commandProperties: CommandProperties,
-    ) = EventCountSnapshotTriggerDefinition(
+    ): SnapshotTriggerDefinition = EventCountSnapshotTriggerDefinition(
         snapshotter,
         commandProperties.snapshotTriggerThresholdRoom
     )
@@ -54,7 +63,7 @@ class CommandConfiguration {
     fun accountSnapshotTriggerDefinition(
         snapshotter: Snapshotter,
         commandProperties: CommandProperties,
-    ) = EventCountSnapshotTriggerDefinition(
+    ): SnapshotTriggerDefinition = EventCountSnapshotTriggerDefinition(
         snapshotter,
         commandProperties.snapshotTriggerThresholdAccount
     )
@@ -63,7 +72,7 @@ class CommandConfiguration {
     fun paymentSnapshotTriggerDefinition(
         snapshotter: Snapshotter,
         commandProperties: CommandProperties,
-    ) = EventCountSnapshotTriggerDefinition(
+    ): SnapshotTriggerDefinition = EventCountSnapshotTriggerDefinition(
         snapshotter,
         commandProperties.snapshotTriggerThresholdPayment
     )
