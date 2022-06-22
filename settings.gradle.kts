@@ -7,4 +7,5 @@ include(
     "axon:hotel-booking-common",
     "axon:hotel-booking-command",
     "axon:hotel-booking-query",
+    "gatling",
 )
