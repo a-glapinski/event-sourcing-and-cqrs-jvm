@@ -20,15 +20,12 @@ ext {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-integration")
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation("io.projectreactor:reactor-core")
+    implementation("org.springframework.data:spring-data-commons")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.axonframework:axon-spring-boot-starter")
     implementation("org.axonframework.extensions.mongo:axon-mongo")
-    implementation("org.axonframework.extensions.reactor:axon-reactor-spring-boot-starter")
+    implementation("org.axonframework.extensions.reactor:axon-reactor")
     implementation("org.axonframework.extensions.kotlin:axon-kotlin")
-    implementation("org.axonframework.extensions.tracing:axon-tracing-spring-boot-starter")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

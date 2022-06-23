@@ -32,7 +32,6 @@ dependencies {
     implementation("org.axonframework.extensions.springcloud:axon-springcloud-spring-boot-starter")
     implementation("org.axonframework.extensions.reactor:axon-reactor-spring-boot-starter")
     implementation("org.axonframework.extensions.kotlin:axon-kotlin")
-    implementation("org.axonframework.extensions.tracing:axon-tracing-spring-boot-starter")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
