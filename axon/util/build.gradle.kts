@@ -23,7 +23,6 @@ dependencies {
     implementation("io.projectreactor:reactor-core")
     implementation("org.springframework.data:spring-data-commons")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation("org.axonframework.extensions.mongo:axon-mongo")
     implementation("org.axonframework.extensions.reactor:axon-reactor")
     implementation("org.axonframework.extensions.kotlin:axon-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
