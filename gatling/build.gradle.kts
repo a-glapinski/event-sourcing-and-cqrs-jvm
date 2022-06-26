@@ -1,5 +1,5 @@
 plugins {
-    id("scala")
+    scala
     id("io.gatling.gradle") version "3.7.6.3"
 }
 

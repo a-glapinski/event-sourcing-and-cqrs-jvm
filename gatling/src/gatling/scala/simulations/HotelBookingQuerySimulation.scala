@@ -7,13 +7,14 @@ import io.gatling.http.Predef._
 class HotelBookingQuerySimulation extends Simulation {
   val httpProtocol = http
     .baseUrl(Constants.HotelBookingQueryBaseUrl)
-    .acceptHeader(Constants.AcceptHeaders)
 
-  val scn = scenario("Get account")
-    .exec(
-      http("request_1")
-        .get("/accounts").check(status is 200)
-    )
+  val getAllAccounts = exec(
+    http("Get all accounts")
+      .get("/accounts")
+      .check(status is 200)
+  )
+
+  val scn = scenario("Accounts").exec(getAllAccounts)
 
   setUp(scn.inject(atOnceUsers(1)).protocols(httpProtocol))
 }
