@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="AxonHotelBookingQueryApplication3" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <option name="ACTIVE_PROFILES" />
+    <module name="event-sourcing-and-cqrs-jvm.axon.hotel-booking-query.main" />
+    <option name="PROGRAM_PARAMETERS" value="--server.port=8183 --spring.data.mongodb.port=27019" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="pl.poznan.put.hotel.booking.AxonHotelBookingQueryApplication" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="pl.poznan.put.hotel.booking.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

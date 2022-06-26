@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="AxonHotelBookingCommandApplication3" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <option name="ACTIVE_PROFILES" />
+    <module name="event-sourcing-and-cqrs-jvm.axon.hotel-booking-command.main" />
+    <option name="PROGRAM_PARAMETERS" value="--server.port=8083" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="pl.poznan.put.hotel.booking.AxonHotelBookingCommandApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
