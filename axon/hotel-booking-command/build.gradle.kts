@@ -29,7 +29,6 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.axonframework:axon-spring-boot-starter")
-    implementation("org.axonframework.extensions.springcloud:axon-springcloud-spring-boot-starter")
     implementation("org.axonframework.extensions.reactor:axon-reactor-spring-boot-starter")
     implementation("org.axonframework.extensions.kotlin:axon-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
