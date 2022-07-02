@@ -32,3 +32,13 @@ scrape_configs:
         services:
           - axon-hotel-booking-command
           - axon-hotel-booking-query
+  - job_name: gateway
+    honor_timestamps: true
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    metrics_path: /actuator/prometheus
+    scheme: http
+    consul_sd_configs:
+      - server: consul:8500
+        services:
+          - gateway

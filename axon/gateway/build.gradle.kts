@@ -29,6 +29,8 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-webflux-ui:1.6.9")
     implementation("org.springdoc:springdoc-openapi-kotlin:1.6.9")
     implementation("com.github.ben-manes.caffeine:caffeine:3.1.1")
+    implementation("io.micrometer:micrometer-core")
+    implementation("io.micrometer:micrometer-registry-prometheus")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
