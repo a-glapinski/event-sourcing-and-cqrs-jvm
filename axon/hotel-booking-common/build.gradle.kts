@@ -30,6 +30,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("io.github.microutils:kotlin-logging-jvm:2.1.23")
+    implementation("io.micrometer:micrometer-core")
+    implementation("org.axonframework:axon-micrometer")
 }
 
 dependencyManagement {

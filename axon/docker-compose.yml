@@ -3,7 +3,7 @@ services:
     image: axoniq/axonserver
     hostname: axonserver
     volumes:
-      - ./axonserver-config:/config:ro
+      - ./docker/axonserver:/config:ro
     ports:
       - "8024:8024"
       - "8124:8124"
@@ -11,7 +11,8 @@ services:
     networks:
       - axon-net
   consul:
-    image: bitnami/consul:1.12.2
+    image: bitnami/consul:1
+    hostname: consul
     ports:
       - "8300:8300"
       - "8301:8301"
@@ -21,6 +22,31 @@ services:
       - "8600:8600/udp"
     networks:
       - axon-net
+  prometheus:
+    image: bitnami/prometheus:2
+    hostname: prometheus
+    depends_on:
+      - consul
+    volumes:
+      - ./docker/prometheus:/etc/prometheus:ro
+    ports:
+      - "9090:9090"
+    networks:
+      - axon-net
+  grafana:
+    image: bitnami/grafana:8
+    hostname: grafana
+    depends_on:
+      - prometheus
+    volumes:
+      - ./docker/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./docker/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
+    ports:
+      - "3000:3000"
+    networks:
+      - axon-net
+    environment:
+      - "GF_SECURITY_ADMIN_PASSWORD=bitnami"
   mongodb-hotel-booking-1:
     image: bitnami/mongodb:5.0
     ports:
@@ -34,6 +60,7 @@ services:
       MONGODB_PASSWORD: 1
   mongodb-hotel-booking-2:
     image: bitnami/mongodb:5.0
+    profiles: [ "2-instances", "3-instances" ]
     ports:
       - "27018:27017"
     networks:
@@ -45,6 +72,7 @@ services:
       MONGODB_PASSWORD: 1
   mongodb-hotel-booking-3:
     image: bitnami/mongodb:5.0
+    profiles: [ "3-instances" ]
     ports:
       - "27019:27017"
     networks:
@@ -54,7 +82,5 @@ services:
       MONGODB_DATABASE: hotel-booking
       MONGODB_USERNAME: mongo
       MONGODB_PASSWORD: 1
-volumes:
-  axonserver-data:
 networks:
   axon-net:

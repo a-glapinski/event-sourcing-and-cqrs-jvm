@@ -1,0 +1,12 @@
+apiVersion: 1
+
+providers:
+  - name: "Axon Dashboards"
+    org_id: 1
+    path: ""
+    type: "file"
+    options:
+      path: "/etc/grafana/provisioning/dashboards"
+    editable: true
+    allowUiUpdates: true
+    disableDeletion: true
