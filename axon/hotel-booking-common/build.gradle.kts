@@ -16,7 +16,7 @@ repositories {
 }
 
 ext {
-    set("axonVersion", "4.5.13")
+    set("axonVersion", "4.5.16")
 }
 
 dependencies {
