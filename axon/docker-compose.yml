@@ -1,6 +1,6 @@
 services:
   axonserver:
-    image: axoniq/axonserver
+    image: axoniq/axonserver:4.6.1-jdk-17-dev
     hostname: axonserver
     volumes:
       - ./docker/axonserver:/config:ro
@@ -34,7 +34,7 @@ services:
     networks:
       - axon-net
   grafana:
-    image: bitnami/grafana:8
+    image: bitnami/grafana:9
     hostname: grafana
     depends_on:
       - prometheus
@@ -46,7 +46,7 @@ services:
     networks:
       - axon-net
     environment:
-      - "GF_SECURITY_ADMIN_PASSWORD=bitnami"
+      GF_SECURITY_ADMIN_PASSWORD: bitnami
   mongodb-hotel-booking-1:
     image: bitnami/mongodb:5.0
     ports:
