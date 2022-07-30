@@ -1,6 +1,4 @@
 axon:
-  distributed:
-    enabled: true
   serializer:
     general: jackson
   metrics:
