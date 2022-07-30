@@ -25,8 +25,8 @@ class RoomQueryService(
         reactorQueryGateway.query(FindRoomAvailabilityForAccountQuery(roomId, accountId))
 
     fun getAllCleaningSchedules(): Mono<List<RoomCleaningScheduleResponse>> =
-        reactorQueryGateway.queryMany(FindAllRoomCleaningSchedulesQuery())
+        reactorQueryGateway.queryMany(FindAllRoomCleaningSchedulesQuery)
 
     fun getAllCheckoutSchedules(): Mono<List<RoomCheckoutScheduleResponse>> =
-        reactorQueryGateway.queryMany(FindAllRoomCheckoutSchedulesQuery())
+        reactorQueryGateway.queryMany(FindAllRoomCheckoutSchedulesQuery)
 }

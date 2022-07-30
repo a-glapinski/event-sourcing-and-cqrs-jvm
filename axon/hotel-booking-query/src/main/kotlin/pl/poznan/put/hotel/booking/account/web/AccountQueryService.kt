@@ -18,5 +18,5 @@ class AccountQueryService(
         reactorQueryGateway.query(FindAccountQuery(accountId))
 
     fun getAll(): Mono<List<AccountResponse>> =
-        reactorQueryGateway.queryMany(FindAccountsQuery())
+        reactorQueryGateway.queryMany(FindAccountsQuery)
 }

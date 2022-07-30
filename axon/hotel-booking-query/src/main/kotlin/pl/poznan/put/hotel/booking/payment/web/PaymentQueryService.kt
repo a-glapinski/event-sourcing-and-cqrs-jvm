@@ -22,5 +22,5 @@ class PaymentQueryService(
         reactorQueryGateway.queryMany(FindPaymentsForAccountQuery(accountId))
 
     fun getAll(): Mono<List<PaymentResponse>> =
-        reactorQueryGateway.queryMany(FindPaymentsQuery())
+        reactorQueryGateway.queryMany(FindPaymentsQuery)
 }
