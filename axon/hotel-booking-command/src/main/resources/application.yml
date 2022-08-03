@@ -20,6 +20,10 @@ server:
 spring:
   application:
     name: axon-hotel-booking-command
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.application.name}:${random.value}
 management:
   endpoint:
     metrics:

@@ -14,6 +14,10 @@ server:
 spring:
   application:
     name: axon-hotel-booking-query
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.application.name}:${random.value}
   data:
     mongodb:
       host: localhost
