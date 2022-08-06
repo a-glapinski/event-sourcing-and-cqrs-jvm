@@ -35,6 +35,8 @@ out/
 
 ### VS Code ###
 .vscode/
+.bloop/
+.metals/
 
 ### macOS ###
 .DS_Store
