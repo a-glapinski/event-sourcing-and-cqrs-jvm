@@ -26,6 +26,10 @@ spring:
       username: mongo
       password: "1"
       uuid-representation: standard
+logging:
+  level:
+    pl.poznan.put.util.logging.LoggingReactorMessageDispatchInterceptor: WARN
+    org.axonframework.messaging.interceptors.LoggingInterceptor: WARN
 management:
   endpoint:
     metrics:

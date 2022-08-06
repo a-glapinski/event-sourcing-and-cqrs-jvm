@@ -24,6 +24,10 @@ spring:
     consul:
       discovery:
         instance-id: ${spring.application.name}:${random.value}
+logging:
+  level:
+    pl.poznan.put.util.logging.LoggingReactorMessageDispatchInterceptor: WARN
+    org.axonframework.messaging.interceptors.LoggingInterceptor: WARN
 management:
   endpoint:
     metrics:
