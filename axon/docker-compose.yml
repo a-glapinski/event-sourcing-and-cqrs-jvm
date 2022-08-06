@@ -25,10 +25,12 @@ services:
   prometheus:
     image: bitnami/prometheus:2
     hostname: prometheus
+    user: "root"
     depends_on:
       - consul
     volumes:
-      - ./docker/prometheus:/etc/prometheus:ro
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./docker/prometheus/data:/prometheus
     ports:
       - "9090:9090"
     networks:
