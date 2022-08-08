@@ -1,6 +1,6 @@
 plugins {
     scala
-    id("io.gatling.gradle") version "3.8.2"
+    id("io.gatling.gradle") version "3.8.3.2"
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_17
